@@ -108,7 +108,7 @@ const SubstanceSeeker = () => {
       {/* Main content */}
       <div className="relative max-w-lg w-full">
         <h1 className="text-2xl font-normal text-black mb-8 spaced-letters animate-fade-in">
-          are you looking for substance?
+          are you looking for <span className={`transition-all duration-700 ${getSubstanceStyle()}`}>substance</span>?
         </h1>
         
         <a
@@ -117,7 +117,7 @@ const SubstanceSeeker = () => {
           rel="noopener noreferrer"
           aria-label="Find substance"
         >
-          perhaps <span className={`transition-all duration-700 ${getSubstanceStyle()}`}>substance</span>
+          perhaps
         </a>
         
         {/* Click and hold easter egg */}
