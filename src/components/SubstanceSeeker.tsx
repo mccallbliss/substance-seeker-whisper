@@ -7,6 +7,7 @@ const SubstanceSeeker = () => {
   const [showSecret, setShowSecret] = useState(false);
   const [showFootnote, setShowFootnote] = useState(false);
   const [konami, setKonami] = useState([]);
+  const [substanceStyle, setSubstanceStyle] = useState(0);
   const konamiCode = [
     "ArrowUp",
     "ArrowUp",
@@ -76,6 +77,32 @@ const SubstanceSeeker = () => {
     return () => window.removeEventListener("mousemove", handleMouseMoveSpecial);
   }, []);
 
+  // New effect for animating "substance" text
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSubstanceStyle((prev) => (prev + 1) % 5);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Style variations for "substance"
+  const getSubstanceStyle = () => {
+    switch (substanceStyle) {
+      case 0:
+        return "font-mono text-lg font-bold text-black";
+      case 1:
+        return "font-serif italic text-xl text-purple-600";
+      case 2:
+        return "font-sans text-lg font-light tracking-widest text-blue-700";
+      case 3:
+        return "font-mono text-sm uppercase font-extrabold tracking-tight text-red-500";
+      case 4:
+        return "font-serif text-2xl font-normal text-emerald-600 italic";
+      default:
+        return "text-black";
+    }
+  };
+
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-white px-4 select-none">
       {/* Main content */}
@@ -90,7 +117,7 @@ const SubstanceSeeker = () => {
           rel="noopener noreferrer"
           aria-label="Find substance"
         >
-          perhaps
+          perhaps <span className={`transition-all duration-700 ${getSubstanceStyle()}`}>substance</span>
         </a>
         
         {/* Click and hold easter egg */}
