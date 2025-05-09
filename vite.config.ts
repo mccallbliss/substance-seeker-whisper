@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: '/',
+  base: '/substance-seeker-whisper/',
   plugins: [
     react(),
     mode === 'development' &&
